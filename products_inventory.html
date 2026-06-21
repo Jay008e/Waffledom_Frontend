@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAFFLEDOM Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="products">
+
+    
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-section">
+
+            <button id="toggle-btn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <h2 class="logo-text">
+                WAFFLEDOM
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="customers.html">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="products_inventory.html">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html">
+                <i class="fas fa-cart-shopping"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="suppliers.html">
+                <i class="fas fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+
+            <a href="payments.html">
+                <i class="fas fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+
+            <a href="reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+   
+
+
+    <main class="main-content" id="main-content">
+        <header class="top-bar">
+
+    <div>
+        <h1>Products & Inventory</h1>
+        <p>
+            Manage product catalog, pricing and inventory levels.
+        </p>
+    </div>
+
+    <button class="primary-btn" id="add-product-btn">
+        Add Product
+    </button>
+
+</header>
+
+<!-- PRODUCT OVERVIEW -->
+
+<section class="product-overview">
+
+    <div class="stat-card">
+        <h3>Total Products</h3>
+        <h2 id="stat-total-products">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Available Products</h3>
+        <h2 id="stat-active-products">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Low Stock Items</h3>
+        <h2 id="stat-low-stock">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Out of Stock</h3>
+        <h2 id="stat-out-stock">…</h2>
+    </div>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="product-search">
+
+    <input
+        type="text"
+        placeholder="Search products..."
+    >
+
+    <select>
+
+        <option>All Categories</option>
+        <option>Waffles</option>
+        <option>Drinks</option>
+        <option>Desserts</option>
+
+    </select>
+
+</section>
+
+<!-- PRODUCT CARDS -->
+
+<section class="product-grid" id="product-grid">
+
+    <div class="product-card">
+
+        <div class="product-header">
+            <h3>Chocolate Waffle</h3>
+            <span class="product-price">₦3,500</span>
+        </div>
+
+        <p>
+            Premium waffle topped with chocolate syrup.
+        </p>
+
+        <div class="stock-badge in-stock">
+            In Stock
+        </div>
+
+    </div>
+
+    <div class="product-card">
+
+        <div class="product-header">
+            <h3>Strawberry Waffle</h3>
+            <span class="product-price">₦3,800</span>
+        </div>
+
+        <p>
+            Fresh strawberry waffle special.
+        </p>
+
+        <div class="stock-badge low-stock">
+            Low Stock
+        </div>
+
+    </div>
+
+    <div class="product-card">
+
+        <div class="product-header">
+            <h3>Milkshake</h3>
+            <span class="product-price">₦2,000</span>
+        </div>
+
+        <p>
+            Vanilla milkshake.
+        </p>
+
+        <div class="stock-badge in-stock">
+            In Stock
+        </div>
+
+    </div>
+
+</section>
+
+<!-- INVENTORY STATUS -->
+
+<section class="inventory-panel">
+
+    <h2>Inventory Status</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Product</th>
+                <th>Stock Quantity</th>
+                <th>Reorder Level</th>
+                <th>Status</th>
+            </tr>
+
+        </thead>
+
+        <tbody id="inventory-tbody">
+
+            <tr>
+                <td>Chocolate Waffle</td>
+                <td>150</td>
+                <td>50</td>
+                <td>Healthy</td>
+            </tr>
+
+            <tr>
+                <td>Strawberry Waffle</td>
+                <td>20</td>
+                <td>50</td>
+                <td>Low Stock</td>
+            </tr>
+
+            <tr>
+                <td>Milkshake</td>
+                <td>0</td>
+                <td>20</td>
+                <td>Out of Stock</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+    </main>
+
+<!-- Add Product Modal -->
+<div id="add-product-modal" class="modal-overlay">
+  <div class="modal">
+    <h2>Add Product</h2>
+    <form id="add-product-form">
+      <input id="prod-name" type="text" placeholder="Product Name" required>
+      <input id="prod-category" type="text" placeholder="Category">
+      <input id="prod-price" type="number" step="0.01" placeholder="Unit Price" required>
+      <div class="modal-actions">
+        <button type="submit" class="primary-btn">Save</button>
+        <button type="button" id="close-product-modal" class="secondary-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="waffledom.js"></script>
+
+</body>
+</html>

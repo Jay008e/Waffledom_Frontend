@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAFFLEDOM Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="dashboard">
+
+    
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-section">
+
+            <button id="toggle-btn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <h2 class="logo-text">
+                WAFFLEDOM
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="customers.html">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="products_inventory.html">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html">
+                <i class="fas fa-cart-shopping"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="suppliers.html">
+                <i class="fas fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+
+            <a href="payments.html">
+                <i class="fas fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+
+            <a href="reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+   
+
+
+    <main class="main-content" id="main-content">
+
+        <header class="top-bar">
+
+            <div>
+
+                <h1>Dashboard</h1>
+
+                <p>
+                    WAFFLEDOM Operations Overview
+                </p>
+
+            </div>
+
+            <input
+            type="search"
+            placeholder="Search">
+
+        </header>
+
+        <!-- DASHBOARD -->
+
+        <section class="dashboard">
+
+            <div class="hero">
+
+                <h2>
+                    WAFFLEDOM Management System
+                </h2>
+
+                <p>
+                    Unified platform for customer,
+                    inventory, supplier, and sales management.
+                </p>
+
+            </div>
+
+            <!-- KPI CARDS -->
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+
+                    <h3>Total Orders</h3>
+
+                    <h2 id="stat-orders">…</h2>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h3>Customers</h3>
+
+                    <h2 id="stat-customers">…</h2>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h3>Products</h3>
+
+                    <h2 id="stat-products">…</h2>
+
+                </div>
+
+                <div class="stat-card">
+
+                    <h3>Revenue</h3>
+
+                    <h2 id="stat-revenue">…</h2>
+
+                </div>
+
+            </div>
+
+            <!-- DASHBOARD PANELS -->
+
+            <div class="dashboard-grid">
+
+                <div class="panel">
+
+                    <h3>Order Management</h3>
+
+                    <ul>
+
+                        <li>Orders Total: <strong id="dash-orders-today">…</strong></li>
+
+                        <li>Orders Pending: <strong id="dash-orders-progress">…</strong></li>
+
+                        <li>Orders Delivered: <strong id="dash-orders-complete">…</strong></li>
+
+                    </ul>
+
+                </div>
+
+                <div class="panel">
+
+                    <h3>Inventory Status</h3>
+
+                    <ul>
+
+                        <li>Active Products: <strong id="dash-products-stock">…</strong></li>
+
+                        <li>Low Stock Items: <strong id="dash-low-stock">…</strong></li>
+
+                        <li>Restock Required</li>
+
+                    </ul>
+
+                </div>
+
+                <div class="panel">
+
+                    <h3>Financial Overview</h3>
+
+                    <ul>
+
+                        <li>Successful Payments</li>
+
+                        <li>Revenue Trends</li>
+
+                        <li>Sales Analytics</li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+<script src="waffledom.js"></script>
+
+</body>
+</html>

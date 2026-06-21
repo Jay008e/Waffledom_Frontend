@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAFFLEDOM Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="suppliers">
+
+    
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-section">
+
+            <button id="toggle-btn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <h2 class="logo-text">
+                WAFFLEDOM
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="customers.html">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="products_inventory.html">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html">
+                <i class="fas fa-cart-shopping"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="suppliers.html">
+                <i class="fas fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+
+            <a href="payments.html">
+                <i class="fas fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+
+            <a href="reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+   
+
+
+    <main class="main-content" id="main-content">
+        <header class="top-bar">
+
+    <div>
+        <h1>Supplier Management</h1>
+        <p>Manage suppliers and inventory sourcing.</p>
+    </div>
+
+    <button class="primary-btn" id="add-supplier-btn">
+        Add Supplier
+    </button>
+
+</header>
+
+<section class="supplier-overview">
+
+    <div class="stat-card">
+        <h3>Total Suppliers</h3>
+        <h2 id="stat-total-suppliers">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Active Suppliers</h3>
+        <h2>—</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending Deliveries</h3>
+        <h2>—</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>This Month Supplies</h3>
+        <h2>—</h2>
+    </div>
+
+</section>
+
+<section class="supplier-directory" id="supplier-directory-grid">
+
+    <div class="supplier-card">
+        <h3>ABC Foods Ltd.</h3>
+        <p>Email: abcfoods@email.com</p>
+        <p>Phone: +234 800 000 0001</p>
+        <p>Location: Lagos</p>
+    </div>
+
+    <div class="supplier-card">
+        <h3>Prime Ingredients</h3>
+        <p>Email: prime@email.com</p>
+        <p>Phone: +234 800 000 0002</p>
+        <p>Location: Abuja</p>
+    </div>
+
+</section>
+
+<section class="supplier-panel">
+
+    <h2>Recent Supplies</h2>
+
+    <table class="data-table">
+
+        <thead>
+            <tr>
+                <th>Supplier</th>
+                <th>Contact Person</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+
+        <tbody id="suppliers-tbody">
+
+            <tr>
+                <td>ABC Foods Ltd.</td>
+                <td>—</td>
+                <td>+234 800 000 0001</td>
+                <td>abcfoods@email.com</td>
+                <td>Lagos</td>
+            </tr>
+
+            <tr>
+                <td>Prime Ingredients</td>
+                <td>—</td>
+                <td>+234 800 000 0002</td>
+                <td>prime@email.com</td>
+                <td>Abuja</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+    </main>
+
+<!-- Add Supplier Modal -->
+<div id="add-supplier-modal" class="modal-overlay">
+  <div class="modal">
+    <h2>Add Supplier</h2>
+    <form id="add-supplier-form">
+      <input id="sup-name" type="text" placeholder="Supplier Name" required>
+      <input id="sup-contact" type="text" placeholder="Contact Person">
+      <input id="sup-phone" type="text" placeholder="Phone Number">
+      <input id="sup-email" type="email" placeholder="Email">
+      <input id="sup-address" type="text" placeholder="Address">
+      <div class="modal-actions">
+        <button type="submit" class="primary-btn">Save</button>
+        <button type="button" id="close-supplier-modal" class="secondary-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="waffledom.js"></script>
+
+</body>
+</html>

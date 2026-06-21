@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAFFLEDOM Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="orders">
+
+    
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-section">
+
+            <button id="toggle-btn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <h2 class="logo-text">
+                WAFFLEDOM
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="customers.html">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="products_inventory.html">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html">
+                <i class="fas fa-cart-shopping"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="suppliers.html">
+                <i class="fas fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+
+            <a href="payments.html">
+                <i class="fas fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+
+            <a href="reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+   
+
+
+    <main class="main-content" id="main-content">
+        <header class="top-bar">
+
+    <div>
+        <h1>Order Management</h1>
+        <p>
+            Monitor customer orders and transactions.
+        </p>
+    </div>
+
+    <button class="primary-btn" id="add-order-btn">
+        Create Order
+    </button>
+
+</header>
+
+<!-- ORDER STATS -->
+
+<section class="order-overview">
+
+    <div class="stat-card">
+        <h3>Total Orders</h3>
+        <h2 id="stat-total-orders">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Pending Orders</h3>
+        <h2 id="stat-pending-orders">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Completed Orders</h3>
+        <h2 id="stat-completed-orders">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Cancelled Orders</h3>
+        <h2 id="stat-cancelled-orders">…</h2>
+    </div>
+
+</section>
+
+<!-- ORDER LIST -->
+
+<section class="orders-panel">
+
+    <h2>Recent Orders</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Order ID</th>
+                <th>Customer</th>
+                <th>Items</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Update</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="orders-tbody">
+
+            <tr>
+
+                <td>ORD-001</td>
+
+                <td>Sarah Johnson</td>
+
+                <td>
+                    Chocolate Waffle x2,
+                    Milkshake x1
+                </td>
+
+                <td>₦9,000</td>
+
+                <td>
+                    Delivered
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>ORD-002</td>
+
+                <td>David Smith</td>
+
+                <td>
+                    Strawberry Waffle x1
+                </td>
+
+                <td>₦3,800</td>
+
+                <td>
+                    Preparing
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>ORD-003</td>
+
+                <td>Michael Peters</td>
+
+                <td>
+                    Milkshake x2
+                </td>
+
+                <td>₦4,000</td>
+
+                <td>
+                    Pending
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- ORDER ANALYTICS -->
+
+<section class="analytics-panel">
+
+    <h2>Order Performance</h2>
+
+    <div class="analytics-grid">
+
+        <div class="analytics-card">
+
+            <h3>Average Order Value</h3>
+
+            <h2>₦7,250</h2>
+
+        </div>
+
+        <div class="analytics-card">
+
+            <h3>Peak Order Hours</h3>
+
+            <h2>12PM - 3PM</h2>
+
+        </div>
+
+        <div class="analytics-card">
+
+            <h3>Most Ordered Product</h3>
+
+            <h2>Chocolate Waffle</h2>
+
+        </div>
+
+    </div>
+
+</section>
+    </main>
+
+<!-- Add Order Modal -->
+<div id="add-order-modal" class="modal-overlay">
+  <div class="modal">
+    <h2>Create Order</h2>
+    <form id="add-order-form">
+      <select id="order-customer-id" required>
+        <option value="">Select Customer</option>
+      </select>
+      
+      <label style="margin-top: 10px; display: block; color: #ff9500; font-weight: 600;">Items</label>
+      <div id="order-items-container" style="max-height: 150px; overflow-y: auto; padding-right: 5px; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Dynamic item rows will go here -->
+      </div>
+      
+      <button type="button" id="add-item-row-btn" class="secondary-btn" style="margin-top: 5px; width: 100%;">+ Add Item</button>
+      
+      <div class="modal-actions">
+        <button type="submit" class="primary-btn">Save</button>
+        <button type="button" id="close-order-modal" class="secondary-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Pay Order Modal -->
+<div id="pay-order-modal" class="modal-overlay">
+  <div class="modal">
+    <h2>Pay Order</h2>
+    <form id="pay-order-form">
+      <input type="hidden" id="pay-order-id">
+      <div>
+        <label style="color: #ff9500; font-weight: 600;">Order Amount to Pay:</label>
+        <h2 id="pay-amount-label" style="margin: 10px 0; color: white;">₦0</h2>
+      </div>
+      <select id="pay-method" required>
+        <option value="Cash">Cash</option>
+        <option value="Card">Card</option>
+        <option value="Mobile Money">Mobile Money</option>
+        <option value="Check">Check</option>
+      </select>
+      <div class="modal-actions">
+        <button type="submit" class="primary-btn">Submit Payment</button>
+        <button type="button" id="close-pay-modal" class="secondary-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="waffledom.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAFFLEDOM Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="payments">
+
+    
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-section">
+
+            <button id="toggle-btn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <h2 class="logo-text">
+                WAFFLEDOM
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="customers.html">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="products_inventory.html">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html">
+                <i class="fas fa-cart-shopping"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="suppliers.html">
+                <i class="fas fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+
+            <a href="payments.html">
+                <i class="fas fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+
+            <a href="reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+   
+
+
+    <main class="main-content" id="main-content">
+        <header class="top-bar">
+
+    <div>
+        <h1>Payment Management</h1>
+        <p>
+            Monitor transactions, receipts and payment activities.
+        </p>
+    </div>
+
+    <button class="primary-btn">
+        Generate Receipt
+    </button>
+
+</header>
+
+<!-- PAYMENT OVERVIEW -->
+
+<section class="payment-overview">
+
+    <div class="stat-card">
+        <h3>Total Payments</h3>
+        <h2 id="stat-total-payments">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Confirmed Payments</h3>
+        <h2 id="stat-confirmed-payments">…</h2>
+    </div>
+
+    <div class="stat-card">
+        <h3>Total Revenue</h3>
+        <h2 id="stat-total-revenue">…</h2>
+    </div>
+</section>
+
+<!-- PAYMENT METHODS -->
+
+<section class="payment-methods">
+
+    <div class="payment-card">
+
+        <h3>Card Payments</h3>
+
+        <h2>₦7.2M</h2>
+
+        <p>57.6% of transactions</p>
+
+    </div>
+
+    <div class="payment-card">
+
+        <h3>Bank Transfer</h3>
+
+        <h2>₦4.1M</h2>
+
+        <p>32.8% of transactions</p>
+
+    </div>
+
+    <div class="payment-card">
+
+        <h3>Cash Payments</h3>
+
+        <h2>₦1.2M</h2>
+
+        <p>9.6% of transactions</p>
+
+    </div>
+
+</section>
+
+<!-- PAYMENT HISTORY -->
+
+<section class="payment-panel">
+
+    <h2>Recent Transactions</h2>
+
+    <table class="data-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Payment ID</th>
+                <th>Order ID</th>
+                <th>Amount</th>
+                <th>Method</th>
+                <th>Status</th>
+                <th>Date</th>
+
+
+            </tr>
+
+        </thead>
+
+        <tbody id="payments-tbody">
+
+            <tr><td colspan="7">Loading...</td></tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+
+    </main>
+
+<script src="waffledom.js"></script>
+
+</body>
+</html>

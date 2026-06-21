@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAFFLEDOM Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="reports">
+
+    
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-section">
+
+            <button id="toggle-btn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <h2 class="logo-text">
+                WAFFLEDOM
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="customers.html">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="products_inventory.html">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html">
+                <i class="fas fa-cart-shopping"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="suppliers.html">
+                <i class="fas fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+
+            <a href="payments.html">
+                <i class="fas fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+
+            <a href="reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+   
+
+
+    <main class="main-content" id="main-content">
+        <header class="top-bar">
+
+    <div>
+        <h1>Reports & Analytics</h1>
+        <p>
+            Business insights and performance analysis.
+        </p>
+    </div>
+
+    <button class="primary-btn">
+        Export Report
+    </button>
+
+</header>
+
+<!-- KPI SECTION -->
+
+<section class="report-overview">
+
+    <div class="stat-card">
+
+        <h3>Total Revenue</h3>
+
+        <h2 id="report-total-revenue">₦0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Total Orders</h3>
+
+        <h2 id="report-total-orders">0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Customers Served</h3>
+
+        <h2 id="report-customers-served">0</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Average Order Value</h3>
+
+        <h2 id="report-avg-order-value">₦0</h2>
+
+    </div>
+
+</section>
+
+<!-- ANALYTICS CARDS -->
+
+<section class="report-grid">
+
+    <div class="report-card">
+
+        <h3>Best Selling Product</h3>
+
+        <h2 id="report-best-selling-product">None</h2>
+
+        <p id="report-best-selling-desc">0 units sold</p>
+
+    </div>
+
+    <div class="report-card">
+
+        <h3>Top Customer Segment</h3>
+
+        <h2>Returning Customers</h2>
+
+        <p>68% of revenue generated</p>
+
+    </div>
+
+    <div class="report-card">
+
+        <h3>Peak Sales Period</h3>
+
+        <h2>12 PM - 3 PM</h2>
+
+        <p>Highest daily sales volume</p>
+
+    </div>
+
+</section>
+
+<!-- SALES RECORDS -->
+
+<section class="report-panel">
+
+    <h2>Monthly Sales Summary</h2>
+
+    <table class="data-table">
+
+        <thead>
+
+            <tr>
+
+                <th>Month</th>
+                <th>Revenue</th>
+                <th>Orders</th>
+                <th>Customers</th>
+                <th>Growth</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="reports-tbody">
+
+            <tr>
+
+                <td>January</td>
+                <td>₦3.2M</td>
+                <td>610</td>
+                <td>450</td>
+                <td>+8%</td>
+            </tr>
+
+            <tr>
+
+                <td>February</td>
+                <td>₦3.8M</td>
+                <td>720</td>
+                <td>510</td>
+                <td>+18%</td>
+            </tr>
+
+            <tr>
+
+                <td>March</td>
+                <td>₦4.1M</td>
+                <td>805</td>
+                <td>565</td>
+                <td>+7%</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+
+<!-- PERFORMANCE SUMMARY -->
+
+<section class="report-panel">
+
+    <h2>Business Performance Summary</h2>
+
+    <div class="summary-card">
+
+        <p>
+            Revenue continues to increase steadily due to improved
+            customer retention and strong product performance.
+            The Chocolate Waffle
+            remains the best-performing product while afternoon
+            periods generate the highest sales volume.
+        </p>
+
+    </div>
+
+</section>
+    </main>
+
+<script src="waffledom.js"></script>
+
+</body>
+</html>

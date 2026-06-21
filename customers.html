@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAFFLEDOM Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body data-page="customers">
+
+    
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="logo-section">
+
+            <button id="toggle-btn">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <h2 class="logo-text">
+                WAFFLEDOM
+            </h2>
+
+        </div>
+
+        <nav>
+
+            <a href="index.html">
+                <i class="fas fa-chart-line"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="customers.html">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+
+            <a href="products_inventory.html">
+                <i class="fas fa-box"></i>
+                <span>Products</span>
+            </a>
+
+            <a href="orders.html">
+                <i class="fas fa-cart-shopping"></i>
+                <span>Orders</span>
+            </a>
+
+            <a href="suppliers.html">
+                <i class="fas fa-truck"></i>
+                <span>Suppliers</span>
+            </a>
+
+            <a href="payments.html">
+                <i class="fas fa-credit-card"></i>
+                <span>Payments</span>
+            </a>
+
+            <a href="reports.html">
+                <i class="fas fa-chart-pie"></i>
+                <span>Reports</span>
+            </a>
+
+        </nav>
+
+    </aside>
+
+   
+
+
+    <main class="main-content" id="main-content">
+        <header class="top-bar">
+
+    <div>
+
+        <h1>Customer Management</h1>
+
+        <p>
+            Manage customer information,
+            registrations and activity.
+        </p>
+
+    </div>
+
+    <button class="primary-btn" id="add-customer-btn">
+        Add Customer
+    </button>
+
+</header>
+
+<!-- CUSTOMER OVERVIEW -->
+
+<section class="customer-overview">
+
+    <div class="stat-card">
+
+        <h3>Total Customers</h3>
+
+        <h2 id="stat-total-customers">…</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>New This Month</h3>
+
+        <h2>—</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Active Customers</h3>
+
+        <h2>—</h2>
+
+    </div>
+
+    <div class="stat-card">
+
+        <h3>Loyal Customers</h3>
+
+        <h2>—</h2>
+
+    </div>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="customer-search">
+
+    <input
+        type="text"
+        placeholder="Search customer..."
+    >
+
+    <select>
+
+        <option>
+            All Customers
+        </option>
+
+        <option>
+            Active
+        </option>
+
+        <option>
+            New
+        </option>
+
+    </select>
+
+</section>
+
+<!-- CUSTOMER DIRECTORY -->
+
+<section class="customer-directory" id="customer-directory-grid">
+
+    <div class="customer-card">
+
+        <h3>Sarah Johnson</h3>
+
+        <p>Customer ID: C001</p>
+
+        <p>Email: sarah@email.com</p>
+
+        <p>Phone: +234 800 000 0001</p>
+
+        <p>Registered: 12 Jan 2026</p>
+
+    </div>
+
+    <div class="customer-card">
+
+        <h3>Michael Peters</h3>
+
+        <p>Customer ID: C002</p>
+
+        <p>Email: michael@email.com</p>
+
+        <p>Phone: +234 800 000 0002</p>
+
+        <p>Registered: 18 Jan 2026</p>
+
+    </div>
+
+    <div class="customer-card">
+
+        <h3>David Smith</h3>
+
+        <p>Customer ID: C003</p>
+
+        <p>Email: david@email.com</p>
+
+        <p>Phone: +234 800 000 0003</p>
+
+        <p>Registered: 22 Jan 2026</p>
+
+    </div>
+
+</section>
+
+<!-- RECENT ACTIVITY -->
+
+<section class="activity-panel">
+
+    <h2>Recent Customer Activity</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>Customer</th>
+                <th>Activity</th>
+                <th>Date</th>
+                <th>Status</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody id="customer-activity-body">
+
+            <tr>
+
+                <td>Sarah Johnson</td>
+
+                <td>Placed Order</td>
+
+                <td>15 Jun 2026</td>
+
+                <td>
+                    Active
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>Michael Peters</td>
+
+                <td>Account Created</td>
+
+                <td>14 Jun 2026</td>
+
+                <td>
+                    New
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>David Smith</td>
+
+                <td>Updated Profile</td>
+
+                <td>13 Jun 2026</td>
+
+                <td>
+                    Active
+                </td>
+
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</section>
+    </main>
+
+<!-- Add Customer Modal -->
+<div id="add-customer-modal" class="modal-overlay">
+  <div class="modal">
+    <h2>Add Customer</h2>
+    <form id="add-customer-form">
+      <input id="cust-first-name" type="text" placeholder="First Name" required>
+      <input id="cust-last-name" type="text" placeholder="Last Name">
+      <input id="cust-phone" type="text" placeholder="Phone Number">
+      <input id="cust-email" type="email" placeholder="Email">
+      <div class="modal-actions">
+        <button type="submit" class="primary-btn">Save</button>
+        <button type="button" id="close-customer-modal" class="secondary-btn">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="waffledom.js"></script>
+
+</body>
+</html>

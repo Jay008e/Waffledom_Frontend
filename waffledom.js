@@ -3,7 +3,7 @@
 // Base URL: http://127.0.0.1:8000/api/v1
 // ============================================================
 
-const API = const API = 'https://waffledom-backend.onrender.com/api/v1';
+const API = 'https://waffledom-backend.onrender.com/api/v1';
 
 // ── Sidebar toggle ──────────────────────────────────────────
 const sidebar = document.getElementById('sidebar');

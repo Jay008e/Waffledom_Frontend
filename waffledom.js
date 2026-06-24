@@ -610,32 +610,76 @@ async function loadPayments() {
 }
 
 // ============================================================
+// ACTION BUTTON LISTENERS (Receipts & Reports)
+// ============================================================
+
+document.addEventListener('DOMContentLoaded', () => {
+  
+  // 1. GENERATE RECEIPT LOGIC (Payments Page)
+  const btnGenerateReceipt = document.getElementById('btn-generate-receipt');
+  if (btnGenerateReceipt) {
+    btnGenerateReceipt.addEventListener('click', async () => {
+      // Ask the user which order they want to print a receipt for
+      const orderId = prompt("Enter the Order ID to generate a receipt for (e.g., 1):");
+      if (!orderId) return; // Cancelled
+
+      // Fetch the receipt from your FastAPI backend
+      const receiptData = await apiFetch(`/orders/${orderId}/receipt`);
+      
+      if (receiptData) {
+        // Display the receipt data (You can later change this to a nice HTML modal)
+        alert(`🧾 RECEIPT DETAILS\n\nReceipt ID: #${receiptData.receipt_id}\nOrder ID: #${receiptData.order_id}\nAmount: ₦${fmt(receiptData.receipt_amount)}\nStatus: ${receiptData.receipt_status}\nDate: ${new Date(receiptData.receipt_date).toLocaleString()}`);
+      } else {
+        showToast("No receipt found. Ensure the payment was confirmed.", "error");
+      }
+    });
+  }
+
+  // 2. EXPORT REPORT LOGIC (Reports Page)
+  const btnExportReport = document.getElementById('btn-export-report');
+  if (btnExportReport) {
+    btnExportReport.addEventListener('click', () => {
+      showToast("Preparing report for export...", "success");
+      
+      // Trigger the browser's native Print / Save as PDF function
+      setTimeout(() => {
+        window.print(); 
+      }, 500);
+    });
+  }
+
+});
+
+// ============================================================
 // REPORTS & ANALYTICS
 // ============================================================
 async function loadReports() {
   const [orders, payments, customers] = await Promise.all([
-    apiFetch('/orders?limit=1000'),
-    apiFetch('/payments'),
-    apiFetch('/customers'),
+    apiFetch("/orders?limit=1000"),
+    apiFetch("/payments"),
+    apiFetch("/customers"),
   ]);
 
   if (!orders) return;
 
   const totalOrders = orders.length;
-  const totalRevenue = payments ? payments.reduce((s, p) => s + (p.payment_amount || 0), 0) : 0;
+  const totalRevenue = payments
+    ? payments.reduce((s, p) => s + (p.payment_amount || 0), 0)
+    : 0;
   const customersServed = customers ? customers.length : 0;
   const avgOrderValue = totalOrders > 0 ? totalRevenue / totalOrders : 0;
 
-  setText('report-total-revenue', '₦' + fmt(totalRevenue));
-  setText('report-total-orders', fmt(totalOrders));
-  setText('report-customers-served', fmt(customersServed));
-  setText('report-avg-order-value', '₦' + fmt(avgOrderValue));
+  setText("report-total-revenue", "₦" + fmt(totalRevenue));
+  setText("report-total-orders", fmt(totalOrders));
+  setText("report-customers-served", fmt(customersServed));
+  setText("report-avg-order-value", "₦" + fmt(avgOrderValue));
 
   // Calculate best selling product
   const productCounts = {};
-  orders.forEach(o => {
-    o.items?.forEach(item => {
-      productCounts[item.product_id] = (productCounts[item.product_id] || 0) + item.quantity;
+  orders.forEach((o) => {
+    o.items?.forEach((item) => {
+      productCounts[item.product_id] =
+        (productCounts[item.product_id] || 0) + item.quantity;
     });
   });
 
@@ -650,18 +694,39 @@ async function loadReports() {
 
   if (bestProdId) {
     const prod = await apiFetch(`/products/${bestProdId}`);
-    setText('report-best-selling-product', prod?.product_name || `Product #${bestProdId}`);
-    setText('report-best-selling-desc', `${maxQty} units sold`);
+    setText(
+      "report-best-selling-product",
+      prod?.product_name || `Product #${bestProdId}`,
+    );
+    setText("report-best-selling-desc", `${maxQty} units sold`);
   } else {
-    setText('report-best-selling-product', 'None');
-    setText('report-best-selling-desc', '0 units sold');
+    setText("report-best-selling-product", "None");
+    setText("report-best-selling-desc", "0 units sold");
   }
+
+
+    // 2. EXPORT REPORT LOGIC (Reports Page)
+    const btnExportReport = document.getElementById("btn-export-report");
+    if (btnExportReport) {
+      btnExportReport.addEventListener("click", () => {
+        showToast("Preparing report for export...", "success");
+
+        // Trigger the browser's native Print / Save as PDF function
+        setTimeout(() => {
+          window.print();
+        }, 500);
+      });
+    }
+  });
 
   // Monthly sales summary
   const monthlyData = {};
-  orders.forEach(o => {
+  orders.forEach((o) => {
     const date = new Date(o.order_date);
-    const monthName = date.toLocaleString('default', { month: 'long', year: 'numeric' });
+    const monthName = date.toLocaleString("default", {
+      month: "long",
+      year: "numeric",
+    });
     if (!monthlyData[monthName]) {
       monthlyData[monthName] = { revenue: 0, orders: 0, customers: new Set() };
     }
@@ -670,22 +735,25 @@ async function loadReports() {
     monthlyData[monthName].revenue += o.total?.total_amount || 0;
   });
 
-  const tbody = document.getElementById('reports-tbody');
+  const tbody = document.getElementById("reports-tbody");
   if (tbody) {
     const keys = Object.keys(monthlyData);
     if (keys.length === 0) {
-      tbody.innerHTML = '<tr><td colspan="5">No monthly data available</td></tr>';
+      tbody.innerHTML =
+        '<tr><td colspan="5">No monthly data available</td></tr>';
     } else {
-      tbody.innerHTML = keys.map(month => {
-        const d = monthlyData[month];
-        return `<tr>
+      tbody.innerHTML = keys
+        .map((month) => {
+          const d = monthlyData[month];
+          return `<tr>
           <td>${month}</td>
           <td>₦${fmt(d.revenue)}</td>
           <td>${fmt(d.orders)}</td>
           <td>${fmt(d.customers.size)}</td>
           <td>—</td>
         </tr>`;
-      }).join('');
+        })
+        .join("");
     }
   }
 }

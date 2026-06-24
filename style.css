@@ -1155,4 +1155,34 @@ body{
         transform: translateX(0);
         opacity: 1;
     }
-}
+}
+
+/* ==========================================
+   PRINT / EXPORT STYLES
+   ========================================== */
+@media print {
+    /* Hide the sidebar, buttons, and navigation when exporting to PDF */
+    #sidebar, #toggle-btn, .primary-btn, .top-bar p {
+        display: none !important;
+    }
+    
+    /* Expand the main content to fit the paper */
+    .main-content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+        background: white !important;
+        color: black !important;
+    }
+
+    /* Change card backgrounds for better printing */
+    .stat-card, .report-card, .report-panel {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        color: black !important;
+    }
+
+    h1, h2, h3, p {
+        color: black !important;
+    }
+}
